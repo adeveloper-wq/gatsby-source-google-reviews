@@ -1,21 +1,21 @@
 
 const axios = require('axios');
 
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, { placeId, apiKey }) => {
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, { dataId, apiKey }) => {
   const { createNode } = actions;
 
   if (!apiKey || typeof apiKey !== 'string') {
     throw new Error("You must supply a valid API Key from Scale Serp. Visit https://scaleserp.com/ for more information.");
   }
 
-  if (!placeId || typeof placeId !== 'string') {
-    throw new Error("You must supply a valid place id from Google. You can find your place id at https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder.");
+  if (!dataId || typeof dataId !== 'string') {
+    throw new Error('You must supply a valid data_id. You can get your data_id when performing a "Google Places" search request at Scale SERP with the name of your company as query.');
   }
 
   const params = {
     api_key: apiKey,
     search_type: "place_reviews",
-    place_id: placeId,
+    place_id: dataId,
   };
 
   axios.get('https://api.scaleserp.com/search', { params })
