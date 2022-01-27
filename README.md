@@ -17,13 +17,14 @@ plugins: [
   {
     resolve: `gatsby-source-google-reviews`,
     options: {
-      placeId: `placeid`,
+      dataId: `data_id`,
+      apiKey: `Scale_SERP_apiKey`
     },
   },
 ]
 ```
 
-You can find your place id [here](https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder). Simply input the business or location name and Google will do the rest.
+You can get your data_id when performing a "Google Places" search request at Scale SERP with the name of your company as query.
 
 Once you have added the environment variable above, you can run `gatsby develop`. Proceed to the GraphQL interface e.g. `localhost:3000/___graphql`.
 
