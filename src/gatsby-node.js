@@ -1,8 +1,18 @@
+"use strict";
 
 const axios = require('axios');
 
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, { dataId, apiKey }) => {
-  const { createNode } = actions;
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest
+}, {
+  dataId,
+  apiKey
+}) => {
+  const {
+    createNode
+  } = actions;
 
   if (!apiKey || typeof apiKey !== 'string') {
     throw new Error("You must supply a valid API Key from Scale Serp. Visit https://scaleserp.com/ for more information.");
@@ -15,13 +25,12 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, { d
   const params = {
     api_key: apiKey,
     search_type: "place_reviews",
-    data_id: dataId,
+    data_id: dataId
   };
-
-  axios.get('https://api.scaleserp.com/search', { params })
-  .then(response => {
+  await axios.get('https://api.scaleserp.com/search', {
+    params
+  }).then(response => {
     const reviews = response.data.place_reviews_results;
-
     reviews.forEach(review => {
       const nodeContent = JSON.stringify(review);
       const nodeMeta = {
@@ -37,9 +46,9 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, { d
       const node = Object.assign({}, review, nodeMeta);
       createNode(node);
     });
-
-    return;
+    //return;
   }).catch(error => {
     throw new Error(`Error fetching results from ScaleSerp API: ${error}`);
   });
+  return;
 };
