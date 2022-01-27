@@ -15,7 +15,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, { d
   const params = {
     api_key: apiKey,
     search_type: "place_reviews",
-    place_id: dataId,
+    data_id: dataId,
   };
 
   axios.get('https://api.scaleserp.com/search', { params })
