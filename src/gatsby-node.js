@@ -8,7 +8,8 @@ exports.sourceNodes = async ({
   createContentDigest
 }, {
   dataId,
-  apiKey
+  apiKey,
+  language
 }) => {
   const {
     createNode
@@ -22,11 +23,23 @@ exports.sourceNodes = async ({
     throw new Error('You must supply a valid data_id. You can get your data_id when performing a "Google Places" search request at Scale SERP with the name of your company as query.');
   }
 
-  const params = {
-    api_key: apiKey,
-    search_type: "place_reviews",
-    data_id: dataId
-  };
+  let params = {};
+
+  if(!language || typeof language !== 'string'){
+    params = {
+      api_key: apiKey,
+      search_type: "place_reviews",
+      data_id: dataId
+    };
+  }else{
+    params = {
+      api_key: apiKey,
+      search_type: "place_reviews",
+      data_id: dataId,
+      hl: language
+    };
+  }
+
   await axios.get('https://api.scaleserp.com/search', {
     params
   }).then(response => {
