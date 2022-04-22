@@ -4,9 +4,9 @@
   "version": "0.0.7",
   "author": "Kieran White <kwhite@myself.com>",
   "dependencies": {
-    "@babel/runtime": "^7.8.7",
-    "axios": "^0.21.1",
-    "core-js": "^3.6.4"
+    "@babel/runtime": "^7.17.9",
+    "axios": "^0.26.1",
+    "core-js": "^3.22.2"
   },
   "keywords": [
     "gatsby",
@@ -18,10 +18,10 @@
     "url": "https://github.com/kieranwt94/gatsby-source-google-reviews"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "babel-preset-gatsby-package": "^0.2.17",
-    "cross-env": "^7.0.2"
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "babel-preset-gatsby-package": "^2.12.1",
+    "cross-env": "^7.0.3"
   },
   "license": "MIT",
   "scripts": {
